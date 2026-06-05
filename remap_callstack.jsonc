@@ -1,0 +1,123 @@
+// MRVN-Radiant d5e67e7 `tools/remap/source/` "callstack"
+// TODO: list lumps touched by each call (Shared::Vector / Titanfall::LumpVector)
+[
+  {
+    "function": "main", "file": "main.cpp", "line": 59,
+    "calls": [
+      {"line": 218, "function": "BSPMain"}]
+  },
+  {
+    "function": "BSPMain", "file": "bsp.cpp", "line": 574,
+    "calls": [
+      // g_game->compile();  see `game.cpp` for table
+      {"line": 884, "function": "CompileR1BSPFile"},
+      {"line": 884, "function": "CompileR2BSPFile"},
+      {"line": 884, "function": "CompileR5BSPFile"}]
+  },
+  // Titanfall Online
+  {
+    "function": "CompileR1BSPFile": "file": "titanfall/titanfall.cpp", "line": 173,
+    "calls": [
+      // setup bsp
+      {"line": 174, "function": "Titanfall::SetupGameLump"},
+      // NOTE: inject plane for portal stubs into Titanfall::Bsp::planes here
+      // worldspawn
+      {"line": 187, "function": "Titanfall::BeginModel"},
+      {"line": 189, "function": "Shared::MakeMeshes"},
+      {"line": 190, "function": "Shared::MakeVisReferences"},
+      {"line": 192, "function": "Titanfall::EmitMeshes"},
+      {"line": 194, "function": "Titanfall::EmitCollisionGrid"},
+      {"line": 196, "function": "Titanfall::EmitLevelInfoWorldspawn"},
+      {"line": 198, "function": "Titanfall::EndModel"},
+      // static prop
+      {"line": 200, "function": "Titanfall::EmitStaticProp"},
+      // occlusion
+      {"line": 203, "function": "Titanfall::EmitOcclusionMeshes"},
+      // brush ents
+      {"line": 207, "function": "Titanfall::BeginModel"},
+      {"line": 208, "function": "Shared::MakeMeshes"},
+      {"line": 209, "function": "Titanfall::EmitMeshes"},
+      {"line": 210, "function": "Titanfall::EmitModelGridCell"},
+      {"line": 211, "function": "Titanfall::EndModel"},
+      // all ents
+      {"line": 215, "function": "Titanfall::EmitEntity"},
+      // finalise bsp
+      {"line": 221, "function": "Titanfall::EmitEntityPartitions"},
+      {"line": 224, "function": "Shared::MakeVisTree"},
+      {"line": 225, "function": "Shared::MergeVisTree"},
+      {"line": 226, "function": "Titanfall::EmitVisTree"},
+      {"line": 229, "function": "Titanfall::EmitLevelInfo"},
+      {"line": 232, "function": "Titanfall::EmitStubs"}
+    ]
+  },
+  // Titanfall 2
+  {
+    "function": "CompileR2BSPFile": "file": "titanfall2/titanfall2.cpp", "line": 185,
+    "calls": [
+      // setup bsp
+      {"line": 186, "function": "Titanfall::SetupGameLump"},
+      // NOTE: inject plane for portal stubs into Titanfall::Bsp::planes here
+      // worldspawn
+      {"line": 197, "function": "Titanfall::BeginModel"},
+      {"line": 199, "function": "Shared::MakeMeshes"},
+      {"line": 200, "function": "Shared::MakeVisReferences"},
+      {"line": 202, "function": "Titanfall::EmitMeshes"},
+      {"line": 204, "function": "Titanfall::EmitCollisionGrid"},
+      {"line": 206, "function": "Titanfall::EmitLevelInfoWorldspawn"},
+      {"line": 208, "function": "Titanfall::EndModel"},
+      // static prop
+      {"line": 212, "function": "Titanfall2::EmitStaticProp"},
+      // occlusion
+      {"line": 215, "function": "Titanfall::EmitOcclusionMeshes"},
+      // trigger ents
+      {"line": 220, "function": "Titanfall2::EmitTriggerBrushPlaneKeyValues"},
+      // brush ents
+      {"line": 223, "function": "Titanfall::BeginModel"},
+      {"line": 224, "function": "Shared::MakeMeshes"},
+      {"line": 225, "function": "Titanfall::EmitMeshes"},
+      {"line": 226, "function": "Titanfall::EmitModelGridCell"},
+      {"line": 227, "function": "Titanfall::EndModel"},
+      // all ents
+      {"line": 232, "function": "Titanfall::EmitEntity"},
+      // finalise bsp
+      {"line": 238, "function": "Titanfall::EmitEntityPartitions"},
+      {"line": 241, "function": "Shared::MakeVisTree"},
+      // NOTE `Shared::MergeVisTree` is called here, but has been commented out
+      {"line": 243, "function": "Titanfall::EmitVisTree"},
+      {"line": 246, "function": "Titanfall2::EmitLevelInfo"},
+      {"line": 249, "function": "Titanfall2::EmitStubs"},
+      {"line": 250, "function": "Titanfall::EmitStubs"}
+    ]
+  },
+  // Apex Legends
+  {
+    "function": "CompileR5BSPFile": "file": "apex_legends/apex_legends.cpp", "line": 169,
+    "calls": [
+      // setup bsp
+      {"line": 170, "function": "Titanfall::SetupGameLump"},
+      // NOTE: inject plane for portal stubs into Titanfall::Bsp::planes here
+      // worldspawn
+      {"line": 183, "function": "ApexLegends::BeginModel"},
+      {"line": 186, "function": "Shared::MakeMeshes"},
+      {"line": 187, "function": "ApexLegends::EmitMeshes"},
+      {"line": 189, "function": "ApexLegends::EmitBVHNode"},
+      {"line": 191, "function": "ApexLegends::EndModel"},
+      // static prop
+      {"line": 194, "function": "ApexLegends::EmitStaticProp"},
+      // occlusion
+      {"line": 197, "function": "Titanfall::EmitOcclusionMeshes"},
+      // TODO: Trigger Brush Starcoll
+      // all ents
+      {"line": 202, "function": "ApexLegends::EmitEntity"},
+      // finalise bsp
+      {"line": 207, "function": "Shared::MakeVisReferences"},
+      {"line": 208, "function": "Shared::MakeVisTree"},
+      {"line": 209, "function": "Shared::MergeVisTree"},
+      {"line": 210, "function": "ApexLegends::EmitVisTree"},
+      {"line": 212, "function": "Titanfall::EmitEntityPartitions"},
+      {"line": 214, "function": "ApexLegends::EmitLevelInfo"},
+      {"line": 216, "function": "Titanfall::EmitStubs"},
+      {"line": 217, "function": "ApexLegends::EmitStubs"}
+    ]
+  }
+]
